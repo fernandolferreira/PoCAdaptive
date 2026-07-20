@@ -1,0 +1,38 @@
+unique_name: Sales Reason Bridge
+object_type: dimension
+label: Sales Reason Bridge
+description: "Hidden many-to-many bridge linking sales order line items to the Sales Reason Dimension. Modeling utility, not for direct reporting."
+hierarchies:
+  - unique_name: Sales Reason Bridge Hierarchy
+    label: Sales Reason Bridge
+    description: "Hidden bridge hierarchy carrying the many-to-many join between sales lines and sales reasons. Not for reporting."
+    filter_empty: 'yes'
+    folder: Sales Reason
+    is_hidden: true
+    levels:
+      - unique_name: Sales Reason Bridge Key
+        is_hidden: true
+level_attributes:
+  - unique_name: Sales Reason Bridge Key
+    label: Sales Reason Bridge Key
+    description: "Hidden composite bridge key (sales order number plus line number) for the many-to-many sales reason join. Not for reporting."
+    dataset: factinternetsalesreason
+    is_hidden: true
+    key_columns:
+      - salesordernumber
+      - salesorderlinenumber
+    name_column: salesordernumber
+relationships:
+  - unique_name: SalesReasonBridge_SalesReasonDimension
+    from:
+      dataset: factinternetsalesreason
+      hierarchy: Sales Reason Bridge Hierarchy
+      join_columns:
+        - salesreasonkey
+      level: Sales Reason Bridge Key
+    m2m: true
+    to:
+      dimension: Sales Reason Dimension
+      level: Sales Reason
+    type: embedded
+type: standard

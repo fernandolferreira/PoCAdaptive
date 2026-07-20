@@ -1,0 +1,14 @@
+unique_name: dim_geo_state
+object_type: dataset
+label: dim_geo_state
+description: "Geography lookup at state grain: state key, state name, and country."
+connection_id: Connection - Internet Sales
+table: dim_geo_state
+
+columns:
+  - name: country
+    data_type: string
+  - name: state
+    data_type: string
+  - name: statekey
+    data_type: string

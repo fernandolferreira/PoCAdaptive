@@ -1,0 +1,8 @@
+unique_name: Customer Count Prior Year
+object_type: metric_calc
+label: Customer Count Prior Year
+description: Distinct Customer Count for the same period one year prior (prior year, PY, vs last year) on the Order Retail 445 calendar; NULL when Customer Count is empty. Not prior period, not Sales Amount.
+expression: "CASE WHEN ISEMPTY([Measures].[Customer Count]) THEN \nNULL \nELSE (ParallelPeriod([Order\
+  \ Date Dimension].[Order Retail 445].[Order ReportIng Year], 1, [Order Date Dimension].[Order\
+  \ Retail 445].CurrentMember), [Measures].[Customer Count]) END"
+format: general number
