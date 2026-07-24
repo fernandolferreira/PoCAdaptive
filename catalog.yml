@@ -1,0 +1,6 @@
+version: 1.6
+unique_name: PoCAdaptive
+object_type: catalog
+label: PoCAdaptive
+aggressive_agg_promotion: false
+build_speculative_aggs: true
